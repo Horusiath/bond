@@ -9,7 +9,7 @@ cache:
         # - compiler/.cabal-sandbox
         - cs/packages
         - /home/travis/.ccache
-        # - $HOME/.stack
+        - $HOME/.stack
 env:
     - FLAVOR="cs"
     - FLAVOR="cpp-core" BOOST="1.64.0"
@@ -31,7 +31,7 @@ addons:
         - hvr-ghc
     packages:
         - g++-4.8
-        - stack
+        # - stack
         # - cabal-install-1.22
         # - ghc-7.8.4
         # - ghc-7.6.3
@@ -40,6 +40,9 @@ addons:
         - wget
 
 before_install:
+    - mkdir -p ~/.local/bin
+    - export PATH=$HOME/.local/bin:$PATH
+    - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then echo "Hardware:"; grep model\ name /proc/cpuinfo | uniq -c; free -m; fi
     # linux prereqisite packages
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then wget --no-check-certificate https://www.cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.tar.gz; fi
