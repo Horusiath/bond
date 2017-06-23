@@ -113,7 +113,7 @@
 
             # choco install haskellplatform -version 2014.2.0.0 -y
 
-            choco install haskell-stack -y 1>cmake_stdout.log
+            choco install haskell-stack -y
 
             # choco install updated the path, so re-read them from the registry and reset $env:path
 

@@ -6,9 +6,10 @@ os:
     - linux
 cache:
     directories:
-        - compiler/.cabal-sandbox
+        # - compiler/.cabal-sandbox
         - cs/packages
         - /home/travis/.ccache
+        # - $HOME/.stack
 env:
     - FLAVOR="cs"
     - FLAVOR="cpp-core" BOOST="1.64.0"
@@ -30,10 +31,11 @@ addons:
         - hvr-ghc
     packages:
         - g++-4.8
-        - cabal-install-1.22
-        - ghc-7.8.4
-        - ghc-7.6.3
-        - ghc
+        - stack
+        # - cabal-install-1.22
+        # - ghc-7.8.4
+        # - ghc-7.6.3
+        # - ghc
         - ccache
         - wget
 
@@ -62,9 +64,9 @@ before_install:
     - echo "CC=$CC"
     # nunit installation
     - if [ "$FLAVOR" == "cs" ]; then travis_retry nuget install NUnit.Runners -version 2.6.4; fi
-    - export PATH=/opt/cabal/1.22/bin:/opt/ghc/${GHC_VERSION}/bin:$PATH
-    - cabal update
-    - cabal install happy Cabal
+    # - export PATH=/opt/cabal/1.22/bin:/opt/ghc/${GHC_VERSION}/bin:$PATH
+    # - cabal update
+    # - cabal install happy Cabal
 
 before_script:
     # restore nuget packages for solution
