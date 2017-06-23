@@ -9,7 +9,7 @@ cache:
         # - compiler/.cabal-sandbox
         - cs/packages
         - /home/travis/.ccache
-        - $HOME/.stack
+        # - $HOME/.stack
 env:
     - FLAVOR="cpp-cs" BOOST="1.64.0"
     - FLAVOR="cpp-core" BOOST="1.64.0"
