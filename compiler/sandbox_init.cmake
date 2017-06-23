@@ -6,12 +6,12 @@
 # default cabal install uses directory under %APPDATA% which contains user name.
 # As a workaround we execute this .cmake script as a custom command and use CMake
 # cache to get access to variables set during configuration.
-execute_process (
-    COMMAND ${Haskell_CABAL_EXECUTABLE} sandbox init
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    RESULT_VARIABLE error)
-
-if (error)
-    message (FATAL_ERROR)
-endif()
-
+# execute_process (
+#     COMMAND ${Haskell_CABAL_EXECUTABLE} sandbox init
+#     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+#     RESULT_VARIABLE error)
+#
+# if (error)
+#     message (FATAL_ERROR)
+# endif()
+#

@@ -111,7 +111,9 @@
                 $env:BOOST_LIBRARYDIR = "C:/Libraries/boost_1_${env:BOND_BOOST}_0/lib${env:BOND_ARCH}-msvc-${env:BOND_VS_NUM}.0"
             }
 
-            choco install haskellplatform -version 2014.2.0.0 -y
+            # choco install haskellplatform -version 2014.2.0.0 -y
+
+            choco install haskell-stack -y
 
             # choco install updated the path, so re-read them from the registry and reset $env:path
 
@@ -121,7 +123,7 @@
 
             $env:Path = "$machinePath;$userPath"
 
-            cabal update
+            # cabal update
 
             if ($env:BOND_BUILD -eq "Doc") {
 
@@ -154,7 +156,7 @@
 
     cache:
         - cs\packages -> cs\test\core\packages.config
-        - compiler\.cabal-sandbox -> compiler\bond.cabal
+        # - compiler\.cabal-sandbox -> compiler\bond.cabal
 
     before_build:
         - ps: >-
