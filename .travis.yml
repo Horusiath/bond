@@ -79,7 +79,8 @@ script:
     - mkdir build && cd build
 
     - if [ "$FLAVOR" == "cpp-cs" ]; then cmake -DBOND_SKIP_GBC_TESTS=TRUE -DBOND_SKIP_CORE_TESTS=TRUE -DBOND_ENABLE_COMM=FALSE -DBOND_ENABLE_GRPC=FALSE ..; fi
-    - if [ "$FLAVOR" == "cpp-cs" ]; then make --jobs 2 check; fi
+    - if [ "$FLAVOR" == "cpp-cs" ]; then make gbc; fi
+    - if [ "$FLAVOR" == "cpp-cs" ]; then make DESTDIR=$HOME install; fi
     - if [ "$FLAVOR" == "cs" ]; then cmake -DBOND_SKIP_GBC_TESTS=TRUE -DBOND_ENABLE_COMM=FALSE -DBOND_ENABLE_GRPC=FALSE ..; fi
     - if [ "$FLAVOR" == "cs" ]; then make --jobs 2 check; fi
     # - if [ "$FLAVOR" == "cs" ]; then cmake -DBOND_SKIP_GBC_TESTS=TRUE -DBOND_SKIP_CORE_TESTS=TRUE -DBOND_ENABLE_COMM=FALSE -DBOND_ENABLE_GRPC=FALSE ..; fi
